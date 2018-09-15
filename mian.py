@@ -7,18 +7,18 @@ import cv2 as cv
 import numpy as np
 
 # load the calibration data
+
 camtxL = np.load('camera_matrixL.npy')
 camtxR = np.load('camera_matrixR.npy')
 distL = np.load('distortion_cofficientsL.npy')
 distR = np.load('distortion_cofficientsR.npy')
-rmtx = np.load('rotation_mat0.npy')
-tvec = np.load('translation_vectors0.npy')
+rmtx = np.load('rotation_mat.npy')
+tvec = np.load('translation_vectors.npy')
 
 Limg = cv.imread('.\data\left01.jpg', cv.IMREAD_GRAYSCALE)
 Rimg = cv.imread('.\data\\right01.jpg', cv.IMREAD_GRAYSCALE)
 
 size=(640,480)
-print(size)
 # Recfitication
 RL, RR, ncamtxL, ncamtxR, Q, validPixROI1, validPixROI2 = cv.stereoRectify(camtxL, distL, camtxR, distR, size,
                                                                            rmtx, tvec)
